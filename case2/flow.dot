@@ -1,0 +1,25 @@
+digraph G{rankdir=LR;fontname="Arial";node [fontname="Arial",fontsize=11];edge [fontname="Arial",fontsize=10];
+S[label="Регистрация заявки\n(system) 1000",shape=ellipse,style=filled,fillcolor="#c8e6c9"];
+A[label="Первичная проверка\n(specialist)",shape=box,style="rounded,filled",fillcolor="#e3f2fd"];
+G1[label="результат",shape=diamond,style=filled,fillcolor="#fff9c4"];
+B[label="Согласование руководителем\n(manager)",shape=box,style="rounded,filled",fillcolor="#e3f2fd"];
+G2[label="результат",shape=diamond,style=filled,fillcolor="#fff9c4"];
+R[label="Доработка заявки\n(requester)",shape=box,style="rounded,filled",fillcolor="#ffe0b2"];
+C[label="Проверка бюджета\n(finance)",shape=box,style="rounded,filled",fillcolor="#e3f2fd"];
+G3[label="сумма\n> 150 000?",shape=diamond,style=filled,fillcolor="#fff9c4"];
+D[label="Дополнительное согласование\n(director)",shape=box,style="rounded,filled",fillcolor="#e3f2fd"];
+E[label="Исполнение закупки\n(procurement)",shape=box,style="rounded,filled",fillcolor="#e3f2fd"];
+F1[label="Заявка выполнена\n911 (91,1%)",shape=ellipse,style=filled,fillcolor="#a5d6a7",peripheries=2];
+F2[label="Заявка отклонена\n63 (6,3%)",shape=ellipse,style=filled,fillcolor="#ef9a9a",peripheries=2];
+F3[label="Заявка отменена\n26 (2,6%)",shape=ellipse,style=filled,fillcolor="#ef9a9a",peripheries=2];
+S->A[label="1000"];A->G1[label="1174"];
+G1->B[label="accept 1129"];G1->F2[label="reject 45"];
+B->G2[label="1129"];
+G2->C[label="accept 911"];
+G2->R[label="return 174",color="#e65100",fontcolor="#e65100"];
+R->A[label="174 (возврат)",color="#e65100",fontcolor="#e65100",constraint=false];
+G2->F2[label="reject 18"];G2->F3[label="cancel 26"];
+C->G3[label="911"];
+G3->E[label="нет 702"];G3->D[label="да 209"];D->E[label="209"];
+E->F1[label="911"];
+}
