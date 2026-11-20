@@ -1,0 +1,8 @@
+Как запустить (Python 3.10+, нужны pandas и numpy: pip install pandas numpy)
+
+1) Положите в одну папку: students.csv, analyze.py, rules2.py, build.py
+2) Откройте терминал в этой папке и выполните по порядку:
+   python analyze.py   # разбор журнала, длительности -> df.pkl, tasks.pkl
+   python rules2.py    # маршруты процессов -> V.pkl
+   python build.py     # формирует anomalies.csv
+Результат: anomalies.csv (запятая, UTF-8 с BOM — корректно открывается в Excel).
