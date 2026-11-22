@@ -1,0 +1,15 @@
+import duckdb, os
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+con = duckdb.connect("practice.duckdb")
+q = lambda s: con.sql(s).show()
+
+q("SELECT count(*), min(created_at), max(created_at) FROM users")
+q("SELECT status, trial, count(*) FROM orders GROUP BY ALL")
+q("SELECT * FROM product")
+q("SELECT * FROM product_trial")
+q("SELECT * FROM product_periods")
+q("SELECT status, count(*) FROM transactions GROUP BY ALL")
+q("SELECT client_type, os, count(*) FROM devices GROUP BY ALL ORDER BY 3 DESC LIMIT 10")
+q("SELECT count(*) FROM adv_view_history")
+q("SELECT metric_name, count(*) FROM metric_values GROUP BY ALL")
+q("SELECT * FROM advertising_ids LIMIT 5")
